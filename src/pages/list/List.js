@@ -1,11 +1,10 @@
 import React,{ Component  } from 'react';
 import { Image, FlatList, StyleSheet, Text, View,Picker,Platform,Button,TouchableOpacity,ScrollView} from "react-native";
-import AppStorage from '../../common/storage';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { observer, inject } from "mobx-react";
 import {colors} from '../../assets/styles/colors-theme';
 import history from '../../common/history';
-import ListService from '../../services/ListService';
+
 
 @inject(["listStore"]) // 注入对应的store
 @observer // 监听当前组件
@@ -26,7 +25,6 @@ export default class SampleAppMovies extends Component {
        // this.fetchData = this.fetchData.bind(this);
 
         this.store = this.props.listStore; //通过props来导入访问已注入的store
-        this.listService = new ListService(props);
     }
     static navigationOptions = {
         title:'List', //设置导航条标题
@@ -42,18 +40,7 @@ export default class SampleAppMovies extends Component {
             'orderColumn':'createTime',
             'orderDirection':'desc'
         }
-        let token = await AppStorage.get('token');
-        if(!token){
-            const data = await this.listService.getToken();
-            AppStorage.save('token',data.result);
-        }
-        const res = await this.listService.getList(params);
-       // alert(JSON.stringify(res))
-        if(res && res.records){
-            this.setState({
-                data:res.records
-            });
-        }
+       this.store.getList(params);
     }
     setDate = (event, date) => {
         date = date || this.state.date;
@@ -104,7 +91,7 @@ export default class SampleAppMovies extends Component {
                     <Text>上个页面传过来的参数：{name}</Text>
                     <View>
                         <FlatList
-                            data={this.state.data}
+                            data={list}
                             renderItem={this.renderItem.bind(this)}
                             style={styles.list}
                         />

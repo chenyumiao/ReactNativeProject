@@ -3,8 +3,9 @@
  */
 import Http from '../common/http';
 import Url from '../common/interface';
+import AppStorage from '../common/storage';
 
-export default class ListService extends Http{
+ class ListService extends Http{
     /**
      * 获取token
      * @return {Promise<void>}
@@ -18,9 +19,11 @@ export default class ListService extends Http{
      * 获取列表
      * @return {Promise<void>}
      */
-    async getList(param){
+    async getListData(param){
         const url= Url.listUrl;
         const  res =  this.postJson(url,param,'',true,true);
         return res;
     }
 }
+const listService = new ListService();
+export {listService};
