@@ -1,2 +1,12 @@
 # ReactNativeProject
-first react-natve project
+## 1、下载项目  
+git clone
+
+
+
+
+
+
+
+
+
