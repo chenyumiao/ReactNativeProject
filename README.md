@@ -10,6 +10,9 @@ npm install
  注：第一次时间会比较长，耐心等待
  ## 4、生成发布包
  请参考https://reactnative.cn/docs/signed-apk-android/
+ 
+ **请注意**
+ 以上操作的前提是安装了Android Studio和Android SDK,请参考https://reactnative.cn/docs/getting-started/
 
 
 
