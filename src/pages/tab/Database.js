@@ -81,7 +81,7 @@ export default class Details extends Component {
     downloadDb(token){
         //设置下载参数
         alert('download--'+token);
-        var dbUrl = 'http://10.0.10.59:8081/road/app/system/attachment/downloadAppDBFile?dbType=ASSET&version=10.00.0211.1';
+        var dbUrl = 'http://10.0.10.59:8081/road/app/system/attachment/downloadAppDBFile?dbType=ASSET&version=10.00.0246.1';
         var toFile = 'file:///sdcard/szewec/reactNative/react_asset.db';
         const options = {
             fromUrl: dbUrl,
@@ -103,7 +103,7 @@ export default class Details extends Component {
         ret.promise.then(res => {
             //下载完成时执行
             console.log(res);
-            console.log('下载成功');
+            alert('下载成功');
         }).catch(err => {
                 //下载出错时执行
                 console.log(err)
@@ -156,6 +156,7 @@ export default class Details extends Component {
         }, (err)=> {//所有的 transaction都应该有错误的回调方法，在方法里面打印异常信息
             this._errorDB('transaction', err);
         }, ()=> {
+            alert('创建成功');
             this._successDB('transaction');
         })
     }
@@ -233,6 +234,7 @@ export default class Details extends Component {
         }
         db.transaction((tx)=>{
             tx.executeSql('delete from user',[],()=> {
+                alert('删除数据成功');
                 this._successDB('delete');
             }, (err)=> {
                 this._errorDB('delete', err);
@@ -260,7 +262,7 @@ export default class Details extends Component {
                 <Button onPress={this.create} title="创建表"/>
                 <Button onPress={this.insert} title="插入表"/>
                 <Button onPress={this.inquire} title="查询表"/>
-                <Button onPress={this.delete} title="删除表"/>
+                <Button onPress={this.delete} title="清空表数据"/>
 
                 <FlatList
                     data={this.state.dbData}

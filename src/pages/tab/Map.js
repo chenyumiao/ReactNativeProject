@@ -71,7 +71,7 @@ export default class BaiduMapDemo extends Component {
         let json = JSON.stringify(e);
         let oriMarkers = this.state.markers;
         Geolocation.reverseGeoCode(31.262580,121.609842).then(res =>{
-            alert('222--'+JSON.stringify(res));
+           // alert('222--'+JSON.stringify(res));
         }).catch(e =>{
             console.log(e);
         });

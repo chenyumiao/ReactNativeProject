@@ -136,9 +136,10 @@ android {
     }
     splits {
         abi {
-            enable false
-            include 'armeabi', 'armeabi-v7a', 'mips'
-            universalApk false
+            reset()
+            enable true
+            universalApk false  // If true, also generate a universal APK
+            include "armeabi","armeabi-v7a","mips"
         }
     }
     signingConfigs {
