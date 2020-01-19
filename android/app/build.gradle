@@ -137,7 +137,7 @@ android {
     splits {
         abi {
             reset()
-            enable true
+            enable false
             universalApk false  // If true, also generate a universal APK
             include "armeabi","armeabi-v7a","mips"
         }
