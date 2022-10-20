@@ -18,7 +18,7 @@
     "react-native": "0.61.5",
     "react-native-baidu-map": "^1.0.20",
     "react-native-image-crop-picker": "^0.26.2",
-    "react-native-reanimated": "^1.4.0",
+    "react-native-reanimated": "^2.10.0",
     "react-native-tab-navigator": "^0.3.4",
     "react-native-vector-icons": "^6.6.0",
     "react-navigation-tabs": "^2.6.2"
